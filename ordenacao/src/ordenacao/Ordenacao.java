@@ -6,7 +6,7 @@ import java.util.Random;
 public class Ordenacao {
         
     public static void main(String[] args) {
-        for(int i = 0; i < 16; i=i+2){//esse for controla a quantidade de vezes que o programa é executado
+        for(int i = 0; i < 11; i=i+2){//esse for controla a quantidade de vezes que o programa é executado
             int base = 10;
             int potencia = i;
             int n = (int)Math.pow(base, potencia);//função que vai determinar o tamanho do vetor exponencialmente 
@@ -24,6 +24,8 @@ public class Ordenacao {
                 vetorQuick [f] = v[f];
             }// aqui tenho cinco cópias identicas ao vetor gerado aleatoriamente
             
+            //*******Início do BubbleSort*******//
+            
             long tinibubble = System.currentTimeMillis();
             bubbleSort(vetorBubble);//medio caso
             long totmedio = System.currentTimeMillis()-tinibubble; //tempo total do médio caso
@@ -33,7 +35,7 @@ public class Ordenacao {
             bubbleSort(vetorBubble);//melhor caso
             long totmelhor = System.currentTimeMillis()-tinibubble2; //tempo total do melhor caso
             System.out.println("O tempo de execução do Melhor caso Bubble Sort é: " + totmelhor + "ms\n");
-            //criar cópia ordenada drecrescente do vetor para execução do pior caso
+
             int vDesBubble [] = new int [n];
             int y =0;
             for(int d = vetorBubble.length-1; d >= 0;d-- ){
@@ -44,12 +46,13 @@ public class Ordenacao {
             
             long tinibubble3 = System.currentTimeMillis();
             bubbleSort(vDesBubble);//pior caso
-            long totmelhor3 = System.currentTimeMillis()-tinibubble3; //tempo total do pior caso
-            System.out.println("O tempo de execução do Pior caso Bubble Sort é: " + totmelhor3 + "ms\n");
+            long totpior3 = System.currentTimeMillis()-tinibubble3; //tempo total do pior caso
+            System.out.println("O tempo de execução do Pior caso Bubble Sort é: " + totpior3 + "ms\n");
+            
+            //*******Fim do BubbleSort*******//
             
             
-            
-            
+            //*******Início do QuickSort*******//
             
             long tiniquick = System.currentTimeMillis();
             quickSort(vetorQuick, 0, vetorQuick.length-1);
@@ -61,30 +64,78 @@ public class Ordenacao {
             long totmelhor2 = System.currentTimeMillis() - tiniquick2;
             System.out.println("O tempo de execução do Melhor caso Quick Sort é: " + totmelhor2 + "ms\n"); //gravar tempo final medio caso
             
+            int vDesQuick [] = new int [n];
+            int q =0;
+            for(int d = vetorQuick.length-1; d >= 0;d-- ){
+                
+                vDesQuick [q] = vetorQuick[d];
+                q++;
+            }
             
+            long tiniquick3 = System.currentTimeMillis();
+            bubbleSort(vDesQuick);//pior caso
+            long totpiorq3 = System.currentTimeMillis()-tiniquick3; //tempo total do pior caso
+            System.out.println("O tempo de execução do Pior caso Quick Sort é: " + totpiorq3 + "ms\n");
+            
+            //*******Fim do QuickSort*******//
+            
+            
+            //*******Início do SelectionSort*******//
             
             long tiniselection = System.currentTimeMillis();
             selectionSort(vetorSelection);
             long ttmedioselec = System.currentTimeMillis()- tiniselection;
             System.out.println("O tempo de execução do médio caso Selection Sort é: " + ttmedioselec + "ms\n"); //gravar tempo final medio caso
+            
             long tiniselection2 = System.currentTimeMillis();
             selectionSort(vetorSelection);
             long ttmelhorselec = System.currentTimeMillis()- tiniselection2;
             System.out.println("O tempo de execução do Melhor caso Selection Sort é: " + ttmelhorselec + "ms\n"); //gravar tempo final medio caso
             
+            int vDesSelect [] = new int [n];
+            int s =0;
+            for(int d = vetorSelection.length-1; d >= 0;d-- ){
+                
+                vDesSelect [s] = vetorSelection[d];
+                s++;
+            }
+            
+            long tinisele3 = System.currentTimeMillis();
+            bubbleSort(vDesSelect);//pior caso
+            long totpiors3 = System.currentTimeMillis()-tinisele3; //tempo total do pior caso
+            System.out.println("O tempo de execução do Pior caso Selection Sort é: " + totpiors3 + "ms\n");
+            
+            //*******Fim do SelectionSort*******//
             
             
-            
+            //*******Início do InsertionSort*******//
             long tiniinsertion = System.currentTimeMillis();
             insertionSort(vetorInsertion);
             long ttmedioinser = System.currentTimeMillis()- tiniinsertion;
             System.out.println("O tempo de execução do médio caso Insertion Sort é: " + ttmedioinser + "ms\n"); //gravar tempo final medio caso
+            
             long tiniinsertion2 = System.currentTimeMillis();
             insertionSort(vetorInsertion);
             long ttmelhorinser = System.currentTimeMillis()- tiniinsertion2;
-            System.out.println("O tempo de execução do médio caso Insertion Sort é: " + ttmelhorinser + "ms\n"); //gravar tempo final medio caso
+            System.out.println("O tempo de execução do Melhor caso Insertion Sort é: " + ttmelhorinser + "ms\n"); //gravar tempo final Mlehor caso
+            
+            int vDesInsert [] = new int [n];
+            int h =0;
+            for(int d = vetorInsertion.length-1; d >= 0;d-- ){
+                
+                vDesInsert [h] = vetorInsertion[d];
+                h++;
+            }
+            
+            long tiniinser3 = System.currentTimeMillis();
+            bubbleSort(vDesInsert);//pior caso
+            long totpiorin3 = System.currentTimeMillis()-tiniinser3; //tempo total do pior caso
+            System.out.println("O tempo de execução do Pior caso Insertion Sort é: " + totpiorin3 + "ms\n");
+            
+            //*******Fim do InsertionSort*******//
             
             
+            //*******Início do MergeSort*******//
             
             //int[] w = new int[n];
             //long tinimerge = System.currentTimeMillis();
