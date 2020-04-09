@@ -6,11 +6,12 @@ import java.util.Random;
 public class Ordenacao {
         
     public static void main(String[] args) {
-        for(int i = 0; i < 11; i=i+2){//esse for controla a quantidade de vezes que o programa é executado
-            int base = 10;
+        for(int i = 0; i < 8; i=i+1){//esse for controla a quantidade de vezes que o programa é executado
+            int base = 5;
             int potencia = i;
             int n = (int)Math.pow(base, potencia);//função que vai determinar o tamanho do vetor exponencialmente 
             int[] v = gerarVetor(n); //esse método vai gerar o vetor com a quantidade n e irá preencher todo o vetor com números de 0 a 999;
+            System.out.print(Arrays.toString(v));
             int vetorBubble [] = new int [n]; //copia do vetor original
             int vetorSelection [] = new int [n];//copia do vetor original
             int vetorInsertion [] = new int [n];//copia do vetor original
@@ -143,26 +144,12 @@ public class Ordenacao {
             
             
             
-            System.out.println("Fim de um loop n ="  + n);
+            System.out.println("Fim de um loop n ="  + n + "\n");
             /*COLOCAR NO FIM DA EXECUÇÃO POTENCIA + 2*/
             
         }
-        long tempo1 = System.currentTimeMillis();
-        
-        System.out.println("Tempo inicial = " + tempo1);
-        
-        
-         int[] v = gerarVetor(100000);
-         
-         bubbleSort(v);
-         
-         System.out.println(Arrays.toString(v));
-         
-         long tempo2 = System.currentTimeMillis();
-        
-        System.out.println("Tempo final = " + tempo2);
 
-        System.out.println(tempo2 - tempo1 + " milissegundos");
+        System.out.println(" Fim de toda a Execução.");
         
     }
     
