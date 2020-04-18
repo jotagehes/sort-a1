@@ -7,11 +7,11 @@ public class Ordenacao {
         
     public static void main(String[] args) {
         for(int i = 0; i < 8; i=i+1){//esse for controla a quantidade de vezes que o programa é executado
-            int base = 5;
+            int base = 10;
             int potencia = i;
             int n = (int)Math.pow(base, potencia);//função que vai determinar o tamanho do vetor exponencialmente 
             int[] v = gerarVetor(n); //esse método vai gerar o vetor com a quantidade n e irá preencher todo o vetor com números de 0 a 999;
-            System.out.print(Arrays.toString(v));
+            //System.out.print(Arrays.toString(v));
             int vetorBubble [] = new int [n]; //copia do vetor original
             int vetorSelection [] = new int [n];//copia do vetor original
             int vetorInsertion [] = new int [n];//copia do vetor original
@@ -137,7 +137,29 @@ public class Ordenacao {
             
             
             //*******Início do MergeSort*******//
+             long tinimerge = System.currentTimeMillis();
+            mergeSort(vetorMerge, 0, vetorMerge.length-1);
+            long ttmediomerge = System.currentTimeMillis()-tinimerge;
+            System.out.println("O tempo de execução do médio caso Merge Sort é: " + ttmediomerge + "ms\n"); //gravar tempo final medio caso
             
+            long tinimerge2 = System.currentTimeMillis();
+            mergeSort(vetorMerge, 0, vetorMerge.length-1);
+            long totmelhor5 = System.currentTimeMillis() - tinimerge2;
+            System.out.println("O tempo de execução do Melhor caso Merge Sorte é: " + totmelhor5 + "ms\n"); //gravar tempo final medio caso
+            
+            int vDesMerge [] = new int [n];
+            int w =0;
+           
+            for(int d = vetorMerge.length-1; d >= 0;d-- ){
+                
+                vDesMerge [w] = vetorMerge[d];
+                w++;
+            }
+  
+            long tinimerge3 = System.currentTimeMillis();
+            mergeSort(vDesMerge, 0 , vDesMerge.length-1);
+            long totpiorm3 = System.currentTimeMillis()-tinimerge3; //tempo total do pior caso
+            System.out.println("O tempo de execução do Pior caso Merge é: " + totpiorm3 + "ms\n");
             //int[] w = new int[n];
             //long tinimerge = System.currentTimeMillis();
             //mergeSort(vetorMerge, 0, vetorMerge.length);
@@ -172,6 +194,13 @@ public class Ordenacao {
                     int posicaoPivo = separar(vetor, inicio, fim);
                     quickSort(vetor, inicio, posicaoPivo - 1);
                     quickSort(vetor, posicaoPivo + 1, fim);
+             }
+       }
+        private static void mergeSort(int[] vetor, int inicio, int fim) {//vetor a ser ordenado, inicio (0) e fim vetor.length/
+             if (inicio < fim) {
+                    int posicaoPivo = separar(vetor, inicio, fim);
+                    mergeSort(vetor, inicio, posicaoPivo - 1);
+                    mergeSort(vetor, posicaoPivo + 1, fim);
              }
        }
     
@@ -242,17 +271,8 @@ private static void insertionSort(int[] v){
         }
     }
 
-     public static void mergeSort(int a[], int p, int r) {  
-         
-        int q;  
-        if(p < r){  
-            
-            q = (p + r)/2;  
-            mergeSort(a, p, q);  
-            mergeSort(a, q + 1, r);  
-            merge(a, p, q, r);  
-        }  
-    }  
+ 
+     
     
     
     public static void merge(int a[], int p, int q, int r){
